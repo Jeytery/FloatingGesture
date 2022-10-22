@@ -3,8 +3,50 @@
 
 import Foundation
 import UIKit
- 
-class Gesture {
+
+extension UIView {
+    static func animate(duration: CGFloat = 0.5, _ animation: @escaping () -> Void, completion: (() -> Void)? = nil) {
+        UIView.animate(
+            withDuration: duration,
+            delay: 0,
+            usingSpringWithDamping: 1.0,
+            initialSpringVelocity: 1.0,
+            options: .curveEaseIn,
+            animations: {
+                animation()
+            },
+            completion: { _ in completion?() }
+        )
+    }
+
+    static func animate(_ animation: @escaping () -> Void) {
+        UIView.animate(
+            withDuration: 0.5,
+            delay: 0,
+            usingSpringWithDamping: 1.0,
+            initialSpringVelocity: 1.0,
+            options: .curveEaseIn,
+            animations: animation
+        )
+    }
+}
+
+
+class Math {
+    static func mapDiaposons<Type: FloatingPoint>(
+        value: Type ,
+        from diaposonA: ClosedRange<Type>,
+        to diaposonB: ClosedRange<Type>
+    ) -> Type {
+        return (value - diaposonA.upperBound) / (diaposonA.lowerBound - diaposonA.upperBound) * (diaposonB.lowerBound - diaposonB.upperBound) + diaposonB.upperBound
+    }
+    
+    static func getRadian(degree: CGFloat) -> CGFloat {
+        return degree * CGFloat.pi / 180
+    }
+}
+
+public class Gesture {
     @objc func getGesture(_ sender: UIPanGestureRecognizer) {
         let view = sender.view!
         switch sender.state {
