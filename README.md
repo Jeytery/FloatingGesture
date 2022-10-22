@@ -1,3 +1,3 @@
 # FloatingGesture
 
-A description of this package.
+Badoo cards gesture
