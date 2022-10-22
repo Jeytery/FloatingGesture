@@ -4,6 +4,16 @@
 import Foundation
 import UIKit
 
+public extension UIView {
+    func addGesture(_ gesture: Gesture) {
+        let gestureRecognizer = UIPanGestureRecognizer(
+            target: gesture,
+            action: #selector(gesture.getGesture)
+        )
+        addGestureRecognizer(gestureRecognizer)
+    }
+}
+
 extension UIView {
     static func animate(duration: CGFloat = 0.5, _ animation: @escaping () -> Void, completion: (() -> Void)? = nil) {
         UIView.animate(
