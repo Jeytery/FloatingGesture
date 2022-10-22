@@ -42,7 +42,7 @@ extension UIView {
 }
 
 
-class Math {
+public class Math {
     static func mapDiaposons<Type: FloatingPoint>(
         value: Type ,
         from diaposonA: ClosedRange<Type>,
