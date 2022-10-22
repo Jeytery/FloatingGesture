@@ -107,6 +107,8 @@ public extension FloatingGestureDelegate {
 
 public class FloatingGesture: Gesture {
     
+    override public init() {}
+    
     public weak var delegate: FloatingGestureDelegate?
     
     private var view: UIView!
